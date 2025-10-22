@@ -13,84 +13,553 @@
       name="description"
       content="High-performance HTML based website template."
     />
+     <title>Array Sandbox Test</title>
+
+    <!-- Array Scripts -->
+    <script src="https://embed.array.io/cms/array-web-component.js?appKey=3F03D20E-5311-43D8-8A76-E4B5D77793BD"></script>
+    <script src="https://embed.array.io/cms/array-identity-protect.js?appKey=3F03D20E-5311-43D8-8A76-E4B5D77793BD"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: black;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 20px;
+        max-width: 1600px;
+        margin: 0 auto;
+        height: calc(100vh - 40px);
+      }
+
+      .controls-panel {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+      }
+
+      .component-panel {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .control-group {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e1e4e8;
+      }
+
+      .control-group:last-child {
+        border-bottom: none;
+      }
+
+      label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .description {
+        font-size: 0.8rem;
+        color: #666;
+        margin-bottom: 8px;
+        line-height: 1.4;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-family: inherit;
+      }
+
+      input[type="text"]:focus,
+      select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 48px;
+        height: 26px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.3s;
+        border-radius: 26px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.3s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #667eea;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(22px);
+      }
+
+      .toggle-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .toggle-label {
+        font-size: 0.85rem;
+        color: #555;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background: #5568d3;
+      }
+
+      .component-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .current-config {
+        background: #f5f7fa;
+        padding: 12px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        margin-top: 20px;
+        max-height: 150px;
+        overflow-y: auto;
+      }
+
+      .current-config pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        color: #333;
+        font-family: "Monaco", "Courier New", monospace;
+      }
+    </style>
   </head>
   <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
+    <div class="layout">
+      <!-- Controls Panel -->
+      <div class="controls-panel">
+        <h1>⚙️ Component Controls</h1>
+
+        <!-- Start Page -->
+        <div class="control-group">
+          <label for="startPage">Start Page</label>
+          <div class="description">Initial page displayed</div>
+          <select id="startPage" onchange="updateComponent()">
+            <option value="">None (Dashboard)</option>
+            <option value="alerts">Alerts</option>
+            <option value="coaMonitoring">COA Monitoring</option>
+            <option value="darkWebMonitoring">Dark Web Monitoring</option>
+            <option value="dashboard">Dashboard</option>
+            <option value="financialAccounts">Financial Accounts</option>
+            <option value="monitoredInformation">Monitored Information</option>
+            <option value="neighborhoodWatch">Neighborhood Watch</option>
+            <option value="protectionServices">Protection Services</option>
+            <option value="socialMedia">Social Media</option>
+            <option value="ssnMonitoring">SSN Monitoring</option>
+            <option value="telecomMonitoring">Telecom Monitoring</option>
+            <option value="walletLock">Wallet Lock</option>
+          </select>
+        </div>
+
+        <!-- Auto Enrollment Code -->
+        <div class="control-group">
+          <label for="autoEnrollmentCode">Auto Enrollment Code</label>
+          <div class="description">Product enrollment code</div>
+          <select id="autoEnrollmentCode" onchange="updateComponent()">
+            <option value="">None (Bundle1 Default)</option>
+            <option value="disabled">Disabled</option>
+            <option value="idpChangeOfAddressMonitoring">COA Monitoring</option>
+            <option value="idpSSNMonitoring">SSN Monitoring</option>
+            <option value="idpDarkWebMonitoring">Dark Web Monitoring</option>
+            <option value="idpBundle2Monitoring">Bundle 2</option>
+            <option value="idpInsurance1mmRestore">Insurance 1MM</option>
+            <option value="idpBundle1Insurance1mmRestoreBundleMonitoring">
+              Full Bundle
+            </option>
+          </select>
+        </div>
+
+        <!-- Brand Phone -->
+        <div class="control-group">
+          <label for="brandPhoneCustomerService">Customer Service Phone</label>
+          <div class="description">Custom support phone number</div>
+          <input
+            type="text"
+            id="brandPhoneCustomerService"
+            placeholder="+1-833-568-6249"
+            onchange="updateComponent()"
+          />
+        </div>
+
+        <!-- Custom Title Editor -->
+        <div class="control-group">
+          <label for="customTitle">Custom Title</label>
+          <div class="description">
+            Edit the component title (if accessible)
+          </div>
+          <input
+            type="text"
+            id="customTitle"
+            placeholder="Identity Protect"
+            value="Identity Protect"
+          />
+          <button onclick="updateTitle()" style="margin-top: 8px">
+            Update Title
+          </button>
+          <div
+            id="titleStatus"
+            style="margin-top: 8px; font-size: 0.8rem; color: #666"
+          ></div>
+        </div>
+
+        <!-- Boolean Toggles -->
+        <div class="control-group">
+          <label>Boolean Attributes</label>
+
+          <div class="toggle-wrapper">
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="hidePageHeading"
+                onchange="updateComponent()"
+              />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Hide Page Heading</span>
+          </div>
+
+          <div class="toggle-wrapper" style="margin-top: 12px">
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="useTabTextAsPageHeading"
+                onchange="updateComponent()"
+              />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Use Tab Text As Heading</span>
+          </div>
+
+          <div class="toggle-wrapper" style="margin-top: 12px">
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="hidePageNavigation"
+                onchange="updateComponent()"
+              />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Hide Page Navigation</span>
+          </div>
+
+          <div class="toggle-wrapper" style="margin-top: 12px">
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="hideDashboardPageServices"
+                onchange="updateComponent()"
+              />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Hide Dashboard Services</span>
+          </div>
+
+          <div class="toggle-wrapper" style="margin-top: 12px">
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="hideFraudClaimLink"
+                onchange="updateComponent()"
+              />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Hide Fraud Claim Link</span>
+          </div>
+
+          <div class="toggle-wrapper" style="margin-top: 12px">
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="maskSensitiveInfo"
+                checked
+                onchange="updateComponent()"
+              />
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Mask Sensitive Info</span>
+          </div>
+        </div>
+
+        <button onclick="resetComponent()">Reset to Defaults</button>
+
+        <!-- Current Config Display -->
+        <div class="current-config">
+          <strong>Current Attributes:</strong>
+          <pre id="configDisplay"></pre>
+        </div>
+      </div>
+
+      <!-- Component Panel -->
+      <div class="component-panel">
+        <div class="component-wrapper">
+          <array-identity-protect
+            id="idpComponent"
+            appKey="3F03D20E-5311-43D8-8A76-E4B5D77793BD"
+            userToken="AD45C4BF-5C0A-40B3-8A53-ED29D091FA11"
+            apiUrl="https://mock.array.io"
+            sandbox="true"
+            maskSensitiveInfo="true"
+          ></array-identity-protect>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const component = document.getElementById("idpComponent");
+      const configDisplay = document.getElementById("configDisplay");
+
+      function updateComponent() {
+        // Get all values
+        const startPage = document.getElementById("startPage").value;
+        const autoEnrollmentCode =
+          document.getElementById("autoEnrollmentCode").value;
+        const brandPhone = document.getElementById(
+          "brandPhoneCustomerService"
+        ).value;
+        const hidePageHeading =
+          document.getElementById("hidePageHeading").checked;
+        const useTabTextAsPageHeading = document.getElementById(
+          "useTabTextAsPageHeading"
+        ).checked;
+        const hidePageNavigation =
+          document.getElementById("hidePageNavigation").checked;
+        const hideDashboardPageServices = document.getElementById(
+          "hideDashboardPageServices"
+        ).checked;
+        const hideFraudClaimLink =
+          document.getElementById("hideFraudClaimLink").checked;
+        const maskSensitiveInfo =
+          document.getElementById("maskSensitiveInfo").checked;
+
+        // Remove all optional attributes first
+        component.removeAttribute("startPage");
+        component.removeAttribute("autoEnrollmentCode");
+        component.removeAttribute("brandPhoneCustomerService");
+        component.removeAttribute("hidePageHeading");
+        component.removeAttribute("useTabTextAsPageHeading");
+        component.removeAttribute("hidePageNavigation");
+        component.removeAttribute("hideDashboardPageServices");
+        component.removeAttribute("hideFraudClaimLink");
+        component.removeAttribute("maskSensitiveInfo");
+
+        // Set attributes if they have values
+        if (startPage) component.setAttribute("startPage", startPage);
+        if (autoEnrollmentCode)
+          component.setAttribute("autoEnrollmentCode", autoEnrollmentCode);
+        if (brandPhone)
+          component.setAttribute("brandPhoneCustomerService", brandPhone);
+        if (hidePageHeading) component.setAttribute("hidePageHeading", "true");
+        if (useTabTextAsPageHeading)
+          component.setAttribute("useTabTextAsPageHeading", "true");
+        if (hidePageNavigation)
+          component.setAttribute("hidePageNavigation", "true");
+        if (hideDashboardPageServices)
+          component.setAttribute("hideDashboardPageServices", "true");
+        if (hideFraudClaimLink)
+          component.setAttribute("hideFraudClaimLink", "true");
+        if (maskSensitiveInfo)
+          component.setAttribute("maskSensitiveInfo", "true");
+
+        // Update display
+        displayCurrentConfig();
+      }
+
+      function displayCurrentConfig() {
+        const attrs = {};
+        // Always show required attributes
+        attrs.appKey = component.getAttribute("appKey");
+        attrs.userToken = component.getAttribute("userToken");
+        attrs.apiUrl = component.getAttribute("apiUrl");
+        attrs.sandbox = component.getAttribute("sandbox");
+
+        // Add optional attributes if present
+        const optionalAttrs = [
+          "startPage",
+          "autoEnrollmentCode",
+          "brandPhoneCustomerService",
+          "hidePageHeading",
+          "useTabTextAsPageHeading",
+          "hidePageNavigation",
+          "hideDashboardPageServices",
+          "hideFraudClaimLink",
+          "maskSensitiveInfo",
+        ];
+
+        optionalAttrs.forEach((attr) => {
+          const value = component.getAttribute(attr);
+          if (value !== null) {
+            attrs[attr] = value;
+          }
+        });
+
+        configDisplay.textContent = JSON.stringify(attrs, null, 2);
+      }
+
+      function resetComponent() {
+        // Reset all form inputs
+        document.getElementById("startPage").value = "";
+        document.getElementById("autoEnrollmentCode").value = "";
+        document.getElementById("brandPhoneCustomerService").value = "";
+        document.getElementById("hidePageHeading").checked = false;
+        document.getElementById("useTabTextAsPageHeading").checked = false;
+        document.getElementById("hidePageNavigation").checked = false;
+        document.getElementById("hideDashboardPageServices").checked = false;
+        document.getElementById("hideFraudClaimLink").checked = false;
+        document.getElementById("maskSensitiveInfo").checked = true;
+
+        // Update component
+        updateComponent();
+      }
+
+      function updateTitle() {
+        const newTitle = document.getElementById("customTitle").value;
+        const statusDiv = document.getElementById("titleStatus");
+
+        if (!newTitle.trim()) {
+          statusDiv.textContent = "❌ Title cannot be empty";
+          statusDiv.style.color = "#f48771";
+          return;
+        }
+
+        try {
+          // Try to access the shadow root
+          const shadowRoot = component.shadowRoot;
+
+          if (!shadowRoot) {
+            statusDiv.textContent = "❌ Shadow DOM not accessible (closed)";
+            statusDiv.style.color = "#f48771";
+            console.log("Shadow root not accessible");
+            return;
+          }
+
+          // Try to find the title element
+          const titleElement =
+            shadowRoot.querySelector('[data-test-id="idp-title"]') ||
+            shadowRoot.querySelector("h1.title") ||
+            shadowRoot.querySelector("h1");
+
+          if (titleElement) {
+            titleElement.textContent = newTitle;
+            statusDiv.textContent = "✅ Title updated successfully!";
+            statusDiv.style.color = "#4ec9b0";
+            console.log("Title updated to:", newTitle);
+          } else {
+            statusDiv.textContent = "❌ Title element not found";
+            statusDiv.style.color = "#f48771";
+            console.log("Title element not found in shadow DOM");
+
+            // Log the shadow DOM structure for debugging
+            console.log("Shadow DOM structure:", shadowRoot.innerHTML);
+          }
+        } catch (error) {
+          statusDiv.textContent = "❌ Error: " + error.message;
+          statusDiv.style.color = "#f48771";
+          console.error("Error updating title:", error);
+        }
+      }
+
+      // Try to update title after component loads
+      setTimeout(() => {
+        const shadowRoot = component.shadowRoot;
+        if (shadowRoot) {
+          console.log("Shadow DOM is accessible!");
+          console.log(
+            "You can inspect it with: document.getElementById('idpComponent').shadowRoot"
+          );
+
+          // Log available elements
+          const titles = shadowRoot.querySelectorAll(
+            'h1, h2, [data-test-id="idp-title"]'
+          );
+          console.log("Found title elements:", titles);
+        } else {
+          console.log("Shadow DOM is closed or not yet available");
+        }
+      }, 2000);
+
+      // Initialize display
+      displayCurrentConfig();
+    </script>
   </body>
 </html>
